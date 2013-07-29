@@ -1,7 +1,7 @@
 GitHub Viewer
 =============
 
-[http://www.githubviewer.org/](http://www.githubviewer.org/)
+v0.2.0 [http://www.githubviewer.org/](http://www.githubviewer.org/)
 
 An example application that connects to the GitHub REST API and displays
 users from organizations.  Users can then be clicked to retrieve their
@@ -12,9 +12,8 @@ displayed.
 
 ## Running locally ##
 
-To run locally you will need to install [Node.js](http://nodejs.org) and
-[grunt-bbb](http://github.com/backbone-boilerplate/grunt-bbb).  Once the
-dependencies are installed, simply clone the repository and run the server.
+To run locally you will need to install [Node.js](http://nodejs.org) and either
+clone the repository or download the latest tarball.
 
 ``` bash
 # Clone the repository.

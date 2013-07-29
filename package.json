@@ -1,20 +1,33 @@
 {
-  "name": "GitHubViewer",
-  "version": "0.1.0",
+  "name": "github-viewer",
+  "version": "0.2.0",
+  "private": true,
 
-  "dependencies": {
-    "grunt": "~0.4"
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-cssmin": "~0.6.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-bbb-server": "~0.1.0-alpha.12",
+    "grunt-bbb-styles": "~0.1.0-alpha.5",
+    "grunt-bbb-requirejs": "~0.1.0-alpha.5",
+    "grunt-processhtml": "~0.1.0",
+    "grunt-karma": "~0.5.0",
+    "karma-jasmine": "~0.0.3",
+    "karma-mocha": "~0.0.4",
+    "karma-qunit": "~0.0.3",
+    "karma-phantomjs-launcher": "~0.0.1",
+    "grunt-contrib-compress": "~0.5.2"
   },
 
-  "jam": {
-    "packageDir": "./vendor/jam",
-    "baseUrl": "./app",
+  "peerDepenencies": {
+    "grunt-cli": "*",
+    "bower": "*",
+    "generator-bbb": "*"
+  },
 
-    "dependencies": {
-     "backbone": "*",
-      "jquery": "*",
-      "underscore": "*",
-      "backbone.layoutmanager": "*"
-    }
+  "scripts": {
+    "postinstall": "bower install"
   }
 }
