@@ -9,6 +9,9 @@ var app = module.exports;
 // The root path to run the application through.
 app.root = "/";
 
+// API endpoint.
+app.api = "https://api.github.com/";
+
 // Useful defaults for GitHub Viewer.
 _.extend(Backbone.Collection.prototype, {
   cache: true,
