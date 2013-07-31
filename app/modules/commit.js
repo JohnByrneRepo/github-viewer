@@ -39,7 +39,7 @@ Commit.Views = {
     },
 
     serialize: function() {
-      return { commits: this.options.commits };
+      return this;
     },
 
     initialize: function() {
