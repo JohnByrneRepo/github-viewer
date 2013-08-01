@@ -1,17 +1,16 @@
-// Application.
-var app = require("app");
+import app from "app";
 
-// Modules.
-var Repo = require("modules/repo");
-var User = require("modules/user");
-var Commit = require("modules/commit");
+import Commit from "components/commit/index";
+import User from "components/user/index";
+import Repo from "components/repo/index";
 
-// Plugins.
-require("plugins/backbone.collectioncache");
-require("bootstrap");
+import CollectionCache from "plugins/backbone.collectioncache";
+import Bootstrap from "bootstrap";
+
+import mainTemplate from "text!templates/main.html";
 
 // Defining the application router, you can attach sub routers here.
-module.exports = Backbone.Router.extend({
+var Router = Backbone.Router.extend({
   initialize: function() {
     // TODO Clean this up...
     var collections = {
@@ -32,7 +31,7 @@ module.exports = Backbone.Router.extend({
     this.layout = new Backbone.Layout({
       el: "main",
 
-      template: _.template(require("text!templates/main.html")),
+      template: _.template(mainTemplate),
 
       views: {
         ".users": new User.Views.List(collections),
@@ -121,3 +120,5 @@ module.exports = Backbone.Router.extend({
     this.commits.repo = false;
   }
 });
+
+export default Router;

@@ -1,8 +1,14 @@
-module.exports = {
-  Collection: require("components/user/collection"),
+import Collection from "components/user/collection";
+import Item from "components/user/item/view";
+import List from "components/user/list/view";
+
+var Module = {
+  Collection: Collection,
 
   Views: {
-    Item: require("components/user/item/view"),
-    List: require("components/user/list/view")
+    Item: Item,
+    List: List
   }
 };
+
+export default Module;

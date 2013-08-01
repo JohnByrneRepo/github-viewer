@@ -1,10 +1,10 @@
-// External dependencies.
-var _ = require("underscore");
-var $ = require("jquery");
-var Backbone = require("backbone");
+import $ from "jquery";
+import _ from "underscore";
+import Backbone from "backbone";
+import Layout from "layoutmanager";
 
 // Alias the module for easier identification.
-var app = module.exports;
+var app = {};
 
 // The root path to run the application through.
 app.root = "/";
@@ -45,8 +45,4 @@ _.extend(Backbone.Collection.prototype, {
   }
 });
 
-// Configure LayoutManager with Backbone Boilerplate defaults.
-require("layoutmanager").configure({
-  // Allow LayoutManager to augment Backbone.View.prototype.
-  manage: true
-});
+export default app;

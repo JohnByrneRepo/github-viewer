@@ -1,9 +1,9 @@
-var app = require("app");
+import app from "app";
+import template from "text!components/commit/list/template.html";
+import Item from "components/commit/item/view";
 
-var Item = require("components/commit/item/view");
-
-module.exports = Backbone.Layout.extend({
-  template: _.template(require("text!components/commit/list/template.html")),
+var Layout = Backbone.Layout.extend({
+  template: _.template(template),
 
   beforeRender: function() {
     this.options.commits.each(function(commit) {
@@ -23,3 +23,5 @@ module.exports = Backbone.Layout.extend({
     this.listenTo(this.options.commits, "reset sync request", this.render);
   }
 });
+
+export default Layout;

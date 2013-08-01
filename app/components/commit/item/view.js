@@ -1,7 +1,8 @@
-var app = require("app");
+import app from "app";
+import template from "text!components/commit/item/template.html";
 
-module.exports = Backbone.Layout.extend({
-  template: _.template(require("text!components/commit/item/template.html")),
+var Layout = Backbone.Layout.extend({
+  template: _.template(template),
 
   // Use the <TR> from the template.
   el: false,
@@ -14,3 +15,5 @@ module.exports = Backbone.Layout.extend({
     };
   }
 });
+
+export default Layout;

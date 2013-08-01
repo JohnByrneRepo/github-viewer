@@ -1,8 +1,14 @@
-module.exports = {
-  Collection: require("components/commit/collection"),
+import Collection from "components/commit/collection";
+import Item from "components/commit/item/view";
+import List from "components/commit/list/view";
+
+var Module = {
+  Collection: Collection,
 
   Views: {
-    Item: require("components/commit/item/view"),
-    List: require("components/commit/list/view")
+    Item: Item,
+    List: List
   }
 };
+
+export default Module;

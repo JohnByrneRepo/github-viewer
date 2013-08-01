@@ -1,7 +1,8 @@
-var app = require("app");
+import app from "app";
+import template from "text!components/repo/item/template.html";
 
-module.exports = Backbone.Layout.extend({
-  template: _.template(require("text!components/repo/item/template.html")),
+var Layout = Backbone.Layout.extend({
+  template: _.template(template),
 
   tagName: "li",
 
@@ -40,3 +41,5 @@ module.exports = Backbone.Layout.extend({
     }
   }
 });
+
+export default Layout;

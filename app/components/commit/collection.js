@@ -1,8 +1,10 @@
-var app = require("app");
+import app from "app";
 
-module.exports = Backbone.Collection.extend({
+var Collection = Backbone.Collection.extend({
   url: function() {
     return app.api + "repos/" + this.user + "/" + this.repo +
       "/commits?callback=?";
   }
 });
+
+export default Collection;

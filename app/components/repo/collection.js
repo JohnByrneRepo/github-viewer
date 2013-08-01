@@ -1,6 +1,6 @@
-var app = require("app");
+import app from "app";
 
-module.exports = Backbone.Collection.extend({
+var Collection = Backbone.Collection.extend({
   url: function() {
     return app.api + "users/" + this.user + "/repos?callback=?";
   },
@@ -9,3 +9,5 @@ module.exports = Backbone.Collection.extend({
     return -new Date(repo.get("pushed_at"));
   }
 });
+
+export default Collection;

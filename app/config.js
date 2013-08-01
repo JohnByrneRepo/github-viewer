@@ -31,15 +31,6 @@ require.config({
       exports: "Backbone"
     },
 
-    // LayoutManager depends on Backbone.
-    "layoutmanager": {
-      deps: ["backbone"],
-
-      init: function() {
-        return this.Backbone.Layout;
-      }
-    },
-
     // Backbone.CollectionCache depends on Backbone.
     "plugins/backbone.collectioncache": ["backbone"],
 

@@ -1,23 +1,41 @@
-var app = require("app");
+import app from "app";
+import template from "text!components/user/list/template.html";
+import Item from "components/user/item/view";
 
-module.exports = Backbone.Layout.extend({
-  template: _.template(require("text!components/commit/list/template.html")),
+var Layout = Backbone.Layout.extend({
+  template: _.template(template),
+
+  serialize: function() {
+    return { users: this.options.users };
+  },
 
   beforeRender: function() {
-    this.options.commits.each(function(commit) {
-      this.insertView("table", new Commit.Views.Item({
-        model: commit,
-        repo: this.options.commits.repo,
-        user: this.options.commits.user
+    this.options.users.each(function(user) {
+      this.insertView(".user-list", new Item({
+        model: user
       }));
     }, this);
   },
 
-  serialize: function() {
-    return { commits: this.options.commits };
+  afterRender: function() {
+    // Only re-focus if invalid.
+    this.$("input.invalid").focus();
   },
 
   initialize: function() {
-    this.listenTo(this.options.commits, "reset sync request", this.render);
+    // Whenever the collection resets, re-render.
+    this.listenTo(this.options.users, "reset sync request", this.render);
+  },
+
+  events: {
+    "submit form": "updateOrg"
+  },
+
+  updateOrg: function(ev) {
+    app.router.go("org", this.$(".org").val());
+
+    return false;
   }
 });
+
+export default Layout;

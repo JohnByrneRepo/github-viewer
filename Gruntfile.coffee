@@ -10,6 +10,18 @@ module.exports = ->
     # Run your source code through JSHint's defaults.
     jshint: ["app/**/*.js"]
 
+    # Convert ES6 to AMD.  Hey-oh!
+    transpile:
+      main:
+        type: "amd",
+
+        files: [{
+          expand: true,
+          cwd: "app/",
+          src: ["**/*.js"],
+          dest: "dist/app"
+        }]
+
     # This task uses James Burke's excellent r.js AMD builder to take all
     # modules and concatenate them into a single file.
     requirejs:
@@ -79,7 +91,9 @@ module.exports = ->
         host: "0.0.0.0"
         port: 8000
 
-      development: {}
+      development:
+        options:
+          es6: "main"
 
       release:
         options:
@@ -94,8 +108,8 @@ module.exports = ->
     copy:
       release:
         files: [
-          { src: ["app/**"], dest: "dist/" },
           { src: "vendor/**", dest: "dist/" }
+          { src: "app/**", dest: "dist/" }
         ]
 
     compress:
@@ -112,6 +126,7 @@ module.exports = ->
 
   # Third-party tasks.
   @loadNpmTasks("grunt-processhtml")
+  @loadNpmTasks("grunt-es6-module-transpiler")
 
   # Grunt BBB tasks.
   @loadNpmTasks("grunt-bbb-server")
@@ -120,6 +135,6 @@ module.exports = ->
 
   # When running the default Grunt command, just lint the code.
   @registerTask("default", [
-    "clean", "jshint", "processhtml", "copy", "requirejs", "styles", "cssmin",
+    "clean", "processhtml", "copy", "transpile", "requirejs", "styles", "cssmin",
     "compress"
   ])

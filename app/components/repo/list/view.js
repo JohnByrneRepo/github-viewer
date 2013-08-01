@@ -1,9 +1,9 @@
-var app = require("app");
+import app from "app";
+import Item from "components/repo/item/view";
+import template from "text!components/repo/list/template.html";
 
-var Item = require("components/repo/item/view");
-
-module.exports = Backbone.Layout.extend({
-  template: _.template(require("text!components/repo/list/template.html")),
+var Layout = Backbone.Layout.extend({
+  template: _.template(template),
 
   className: "repos-wrapper",
 
@@ -27,3 +27,5 @@ module.exports = Backbone.Layout.extend({
     this.listenTo(this.options.repos, "sync request reset", this.render);
   }
 });
+
+export default Layout;
